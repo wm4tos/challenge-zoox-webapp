@@ -2,6 +2,12 @@ import FormMixin from 'mixins/form';
 
 export default {
   name: 'AuthForm',
+  data() {
+    return {
+      visible: false,
+      hovering: false,
+    };
+  },
   mixins: [FormMixin],
   props: {
     value: {
@@ -20,6 +26,13 @@ export default {
       type: Object,
       required: false,
       default: () => ({}),
+    },
+  },
+  computed: {
+    visibleIcon() {
+      if (this.hovering) return this.visible ? 'visibility_off' : 'visibility';
+
+      return !this.visible ? 'visibility_off' : 'visibility';
     },
   },
 };
