@@ -1,6 +1,7 @@
 // Configuration for your app
 // https://quasar.dev/quasar-cli/quasar-conf-js
-const envParsed = require('./src/config/env')
+const envParsed = require('./src/config/env')();
+const DirectoryNamedWebpackPlugin = require('directory-named-webpack-plugin');
 
 module.exports = function (ctx) {
   return {
@@ -57,7 +58,7 @@ module.exports = function (ctx) {
     // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build
     build: {
       vueRouterMode: 'history', // available values: 'hash', 'history'
-      env: envParsed(),
+      env: Object.assign(envParsed, { PORT: Boolean(process.env.IS_DOCKER) ? 80 : envParsed.PORT  }),
 
       // showProgress: false,
       // gzip: true,
@@ -78,6 +79,14 @@ module.exports = function (ctx) {
             formatter: require('eslint').CLIEngine.getFormatter('stylish')
           }
         })
+
+        cfg.resolve.alias = {
+          ...cfg.resolve.alias,
+          mixins: 'src/mixins',
+          css: 'src/css',
+        }
+
+        cfg.resolve.plugins = [new DirectoryNamedWebpackPlugin(true)]
       }
     },
 
