@@ -1,20 +1,38 @@
+import storeLoader from 'src/store';
+
+const store = storeLoader();
+const isLogged = store.getters['user/isLogged'];
+
+const auth = [
+  {
+    path: '/',
+    component: () => import('layouts/Auth'),
+    children: [
+      { path: '', component: () => import('pages/Auth') },
+    ],
+  },
+];
 
 const routes = [
   {
     path: '/',
-    component: () => import('layouts/MainLayout.vue'),
-    children: [
-      { path: '', component: () => import('pages/Index.vue') },
-    ],
+    component: () => import('layouts/Main'),
   },
 ];
 
 // Always leave this as last one
 if (process.env.MODE !== 'ssr') {
-  routes.push({
-    path: '*',
-    component: () => import('pages/Error404.vue'),
-  });
+  if (!isLogged) {
+    auth.push({
+      path: '*',
+      component: () => import('pages/Error401'),
+    });
+  } else {
+    routes.push({
+      path: '*',
+      component: () => import('pages/Error404'),
+    });
+  }
 }
 
-export default routes;
+export default store.getters['user/isLogged'] ? routes : auth;
