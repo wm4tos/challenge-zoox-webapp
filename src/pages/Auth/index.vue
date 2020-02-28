@@ -1,12 +1,27 @@
 <template>
   <q-page class="auth-page flex justify-center items-center">
     <div class="form-container flex justify-center">
-      <auth-form
-        :onSubmit="auth"
-        v-bind="{ initialValueEmail: 'wrickee@gmail.com', initialValuePassword: 'wes123' }"
-        class="auth-form q-pa-lg"
-        :formAttrs="{ class: 'row justify-center q-gutter-y-md' }"
+      <register-form
+        v-if="isRegistering"
+        class="register-form q-pa-lg"
+        v-bind="{ initialValueEmail, initialValuePassword }"
+        :onSubmit="register"
       />
+      <auth-form
+        v-else
+        :onSubmit="auth"
+        class="auth-form q-pa-lg"
+      >
+        <template v-slot:footer>
+          <a
+            class="text-light-blue-4"
+            href="#"
+            @click="isRegistering = true"
+          >
+            Registrar
+          </a>
+        </template>
+      </auth-form>
     </div>
   </q-page>
 </template>
