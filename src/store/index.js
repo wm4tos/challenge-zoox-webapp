@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import createPersistedState from 'vuex-persistedstate';
 
 import user from './user';
 
@@ -23,6 +24,11 @@ export default function (/* { ssrContext } */) {
     // enable strict mode (adds overhead!)
     // for dev mode only
     strict: process.env.DEV,
+    plugins: [
+      createPersistedState({
+        key: process.env.STATE_KEY,
+      }),
+    ],
   });
 
   return Store;
