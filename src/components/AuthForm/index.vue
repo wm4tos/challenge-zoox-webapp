@@ -30,7 +30,7 @@
         </template>
       </q-input>
       <div class="col-12 flex justify-between">
-        <div>
+        <div class="flex items-center justify-center">
           <slot name="footer" />
         </div>
         <q-btn
