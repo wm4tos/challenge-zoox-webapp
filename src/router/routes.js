@@ -3,7 +3,7 @@ const routes = [
     path: '/',
     component: () => import('layouts/Master'),
     children: [
-      { path: '', component: () => import('pages/Auth') },
+      { path: '', component: () => import('pages/Auth'), meta: { dontNeedAuth: true } },
       { path: 'home', component: () => import('pages/Home') },
     ],
   },
