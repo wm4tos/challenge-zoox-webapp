@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="hHh Lpr fFf">
+  <q-layout view="lHh Lpr lff">
     <main-layout v-if="isLogged" />
     <auth-layout v-else />
   </q-layout>
