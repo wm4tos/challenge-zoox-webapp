@@ -2,15 +2,15 @@
 // https://quasar.dev/quasar-cli/quasar-conf-js
 const envParsed = require('./src/config/env')();
 const DirectoryNamedWebpackPlugin = require('directory-named-webpack-plugin');
+const path = require('path');
+const { readdirSync } = require('fs');
 
 module.exports = function (ctx) {
   return {
     // app boot file (/src/boot)
     // --> boot files are part of "main.js"
     // https://quasar.dev/quasar-cli/cli-documentation/boot-files
-    boot: [
-      'axios'
-    ],
+    boot: readdirSync(path.join(__dirname, 'src', 'boot')),
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
     css: [
