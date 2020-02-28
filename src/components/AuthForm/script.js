@@ -23,11 +23,6 @@ export default {
       type: String,
       default: '',
     },
-    formAttrs: {
-      type: Object,
-      required: false,
-      default: () => ({}),
-    },
   },
   computed: {
     visibleIcon() {

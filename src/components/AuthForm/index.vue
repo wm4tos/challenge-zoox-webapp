@@ -3,8 +3,8 @@
     v-bind="$attrs"
   >
     <q-form
-      v-bind="formAttrs"
       @submit="onSubmit(form) || $emit('submit', form)"
+      class="row"
     >
       <slot />
       <q-input
