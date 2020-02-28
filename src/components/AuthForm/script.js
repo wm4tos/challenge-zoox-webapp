@@ -11,6 +11,10 @@ export default {
     };
   },
   props: {
+    buttonLabel: {
+      type: String,
+      default: 'Entrar',
+    },
     onSubmit: {
       type: Function,
       default: null,

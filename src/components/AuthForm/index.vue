@@ -11,12 +11,14 @@
         class="col-12"
         label="E-mail"
         v-model="form.email"
+        :rules="[$validations.required, $validations.email]"
       />
       <q-input
         class="col-12 input-password"
         label="Senha"
         v-model="form.password"
         :type="!visible ? 'password' : 'text'"
+        :rules="[$validations.required]"
       >
         <template v-slot:append>
           <q-icon
@@ -37,7 +39,7 @@
           color="black"
           outlined
           type="submit"
-          label="Entrar"
+          :label="buttonLabel"
         />
       </div>
     </q-form>
