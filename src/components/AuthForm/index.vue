@@ -4,20 +4,18 @@
   >
     <q-form
       v-bind="formAttrs"
-      @submit="$emit('submit', $event)"
+      @submit="onSubmit(form) || $emit('submit', form)"
     >
       <slot />
       <q-input
         class="col-12"
         label="E-mail"
-        v-model="value.email"
-        @input="emitToFather(value)('email')($event)"
+        v-model="form.email"
       />
       <q-input
         class="col-12 input-password"
         label="Senha"
-        v-model="value.password"
-        @input="emitToFather(value)('password')($event)"
+        v-model="form.password"
         :type="!visible ? 'password' : 'text'"
       >
         <template v-slot:append>
@@ -31,10 +29,14 @@
           />
         </template>
       </q-input>
-      <div class="col-12 flex justify-end">
+      <div class="col-12 flex justify-between">
+        <div>
+          <slot name="footer" />
+        </div>
         <q-btn
           color="black"
           outlined
+          type="submit"
           label="Entrar"
         />
       </div>

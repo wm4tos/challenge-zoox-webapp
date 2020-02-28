@@ -1,26 +1,27 @@
-import FormMixin from 'mixins/form';
-
 export default {
   name: 'AuthForm',
   data() {
     return {
       visible: false,
       hovering: false,
+      form: {
+        email: this.initialValueEmail,
+        password: this.initialValuePassword,
+      },
     };
   },
-  mixins: [FormMixin],
   props: {
-    value: {
-      type: Object,
-      required: true,
-      validator: (val) => {
-        const keysFromVal = Object.keys(val);
-        const keysToValidate = ['email', 'password'];
-
-        return keysFromVal.length
-          && keysFromVal.length === keysToValidate.length
-          && keysToValidate.every((key) => keysFromVal.includes(key));
-      },
+    onSubmit: {
+      type: Function,
+      default: null,
+    },
+    initialValueEmail: {
+      type: String,
+      default: '',
+    },
+    initialValuePassword: {
+      type: String,
+      default: '',
     },
     formAttrs: {
       type: Object,
