@@ -2,7 +2,8 @@
   <q-page class="auth-page flex justify-center items-center">
     <div class="form-container flex justify-center">
       <auth-form
-        v-model="form"
+        :onSubmit="auth"
+        v-bind="{ initialValueEmail: 'wrickee@gmail.com', initialValuePassword: 'wes123' }"
         class="auth-form q-pa-lg"
         :formAttrs="{ class: 'row justify-center q-gutter-y-md' }"
       />
