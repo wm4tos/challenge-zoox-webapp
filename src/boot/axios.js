@@ -3,7 +3,7 @@ import { Loading } from 'quasar';
 
 export default ({ Vue, router, store }) => {
   Vue.prototype.$axios = axios.create({
-    baseURL: 'http://localhost:3000/api',
+    baseURL: `${process.env.API_URL}/api`,
   });
 
   Vue.prototype.$axios.interceptors.request.use(
