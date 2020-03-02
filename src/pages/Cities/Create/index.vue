@@ -1,6 +1,10 @@
 <template>
   <q-page>
-    CreateCity
+    <city-form
+      v-if="isLoaded"
+      :onSubmit="onSubmit"
+      :options="options.states"
+    />
   </q-page>
 </template>
 
