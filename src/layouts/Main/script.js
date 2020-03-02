@@ -6,11 +6,11 @@ export default {
       tabs: [
         {
           title: 'Cidades',
-          link: 'cities',
+          link: { name: 'CitiesIndexPage' },
         },
         {
           title: 'Estados',
-          link: 'states',
+          link: { name: 'StatesIndexPage' },
         },
       ],
     };

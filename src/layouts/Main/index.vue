@@ -13,7 +13,7 @@
         <q-tabs v-show="$q.screen.gt.xs">
           <q-route-tab
             v-for="tab in tabs"
-            :key="tab.link"
+            :key="tab.link.name"
             :label="tab.title"
             :to="tab.link"
           />
@@ -43,7 +43,7 @@
         <q-list>
           <q-item
             v-for="tab in tabs"
-            :key="tab.link"
+            :key="tab.link.name"
             v-ripple
             clickable
             @click="$router.push(tab.link)"
