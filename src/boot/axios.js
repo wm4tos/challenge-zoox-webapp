@@ -3,7 +3,7 @@ import { Loading } from 'quasar';
 
 export default ({ Vue, router, store }) => {
   Vue.prototype.$axios = axios.create({
-    baseURL: `${process.env.API_URL}/api`,
+    baseURL: 'http://localhost:3000/api',
   });
 
   Vue.prototype.$axios.interceptors.request.use(
@@ -43,7 +43,7 @@ export default ({ Vue, router, store }) => {
           break;
       }
 
-      return Promise.reject(response.data);
+      return Promise.reject({ ...response.data, status: response.status });
     },
   );
 };

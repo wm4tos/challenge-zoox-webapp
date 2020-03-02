@@ -35,7 +35,7 @@ export default {
       this.$router.push('/home');
     },
     authError(data, error) {
-      const { data: { message }, status } = error;
+      const { message, status } = error;
 
       switch (status) {
         case 404:
