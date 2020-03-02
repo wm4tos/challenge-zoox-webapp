@@ -1,6 +1,12 @@
 <template>
   <q-page>
-    EditCity
+    <city-form
+      v-if="isLoaded"
+      :initialValues="city"
+      :onSubmit="saveCity"
+      labelSubmit="Editar"
+      :options="options.states"
+    />
   </q-page>
 </template>
 
