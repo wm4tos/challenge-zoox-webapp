@@ -1,5 +1,6 @@
 import ListTable from 'components/ListTable';
 import MixinNotify from 'mixins/notify';
+import HandlerMixin from 'mixins/handlers';
 
 export default {
   name: 'CitiesIndexPage',
@@ -8,6 +9,7 @@ export default {
   },
   mixins: [
     MixinNotify,
+    HandlerMixin,
   ],
   data() {
     return {
@@ -62,13 +64,10 @@ export default {
       const { params } = this;
       return this.$axios.get('/cities', { params })
         .then(this.citiesSuccess)
-        .catch(this.citiesError);
+        .catch(this.handlerError);
     },
     citiesSuccess({ data: cities }) {
       this.cities = cities;
-    },
-    citiesError(err) {
-      if (err.message) this.showNotifyError(err.message);
     },
     redirectToCreate() {
       this.$router.push({ name: 'CreateCity' });
@@ -84,25 +83,20 @@ export default {
     loadStates() {
       return this.$axios.get('/states')
         .then(this.statesSuccess)
-        .catch(this.statesError);
+        .catch(this.handlerError);
     },
     statesSuccess({ data: states }) {
       this.options.states = states;
     },
-    statesError(err) {
-      if (err.message) this.showNotifyError(err.message);
-    },
     deleteCity({ _id }) {
       return this.$axios.delete(`/cities/${_id}`)
-        .then(this.deleteCitySuccess.bind(this, _id));
+        .then(this.deleteCitySuccess.bind(this, _id))
+        .catch(this.handlerError);
     },
     deleteCitySuccess(_id, data) {
       this.showNotifySuccess(data.message);
 
       this.cities.splice(this.cities.findIndex((c) => c._id === _id), 1);
-    },
-    deleteCityError(err) {
-      if (err.message) this.showNotifyError(err.message);
     },
     loadData() {
       this.loadCities();
