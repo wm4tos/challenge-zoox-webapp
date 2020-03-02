@@ -6,7 +6,15 @@ export default {
         color: 'red-9',
       };
 
-      this.$q.notify({ ...defaultOptions, opts });
+      this.$q.notify({ ...defaultOptions, ...opts });
+    },
+    showNotifySuccess(message, opts = {}) {
+      const defaultOptions = {
+        message,
+        color: 'green',
+      };
+
+      this.$q.notify({ ...defaultOptions, ...opts });
     },
   },
 };
