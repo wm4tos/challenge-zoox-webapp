@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import moment from 'moment';
 
 import routes from './routes';
 
@@ -28,12 +27,7 @@ export default function ({ store }) {
   });
 
   Router.beforeEach((to, from, next) => {
-    if (
-      (store.getters['user/isLogged']
-      && store.getters['user/getLoginHour']
-      && moment(store.getters['user/getLoginHour']).isSameOrAfter(moment().subtract({ hour: 1 })))
-      || to.meta.dontNeedAuth
-    ) {
+    if (store.getters['user/isLogged'] || to.meta.dontNeedAuth) {
       next();
     } else {
       store.dispatch('user/LOGOUT');

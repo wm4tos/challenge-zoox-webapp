@@ -1,3 +1,5 @@
+import { mapGetters } from 'vuex';
+
 import AuthForm from 'components/AuthForm';
 import RegisterForm from 'components/RegisterForm';
 import NotifyMixin from 'mixins/notify';
@@ -19,6 +21,11 @@ export default {
       initialValuePassword: '',
       isRegistering: false,
     };
+  },
+  computed: {
+    ...mapGetters({
+      isLogged: 'user/isLogged',
+    }),
   },
   methods: {
     auth(data) {
@@ -72,5 +79,10 @@ export default {
 
       this.showNotifyError(data.message);
     },
+  },
+  mounted() {
+    if (this.isLogged) {
+      this.$router.push('home');
+    }
   },
 };
