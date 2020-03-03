@@ -3,7 +3,7 @@ import NotifyMixin from 'mixins/notify';
 import HandlerMixin from 'mixins/handlers';
 
 export default {
-  name: 'EditCityPage',
+  name: 'CreateCityPage',
   components: {
     CityForm,
   },
