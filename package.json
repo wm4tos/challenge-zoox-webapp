@@ -8,9 +8,8 @@
   "author": "Wesley Matos <wesley.matos@redfox.tech>",
   "private": true,
   "scripts": {
-    "start": "node server.js",
+    "start": "npx @quasar/cli serve -p 80 dist/spa",
     "build": "npx @quasar/cli build",
-    "heroku-postbuild": "npm install && npm run build",
     "start:dev": "npx @quasar/cli dev",
     "lint": "eslint --ext .js,.vue src",
     "test": "echo \"No test specified\" && exit 0"
