@@ -31,6 +31,7 @@ export default {
 
       this.$store.dispatch('user/SET_USER', user);
       this.$store.dispatch('user/SET_TOKEN', token);
+      this.$store.dispatch('user/SET_LOGIN_HOUR', Date.now());
 
       this.$router.push('/home');
     },
