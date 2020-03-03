@@ -9,6 +9,7 @@ export function SET_TOKEN(ctx, val) {
 export function LOGOUT(ctx) {
   ctx.commit('SAVE_USER', {});
   ctx.commit('SAVE_TOKEN', '');
+  ctx.commit('SAVE_LOGIN_HOUR', '');
 }
 
 export function SET_LOGIN_HOUR(ctx, val) {
