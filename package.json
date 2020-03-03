@@ -10,6 +10,7 @@
   "scripts": {
     "start": "node server.js",
     "build": "npx @quasar/cli build",
+    "heroku-postbuild": "yarn && yarn build",
     "start:dev": "npx @quasar/cli dev",
     "lint": "eslint --ext .js,.vue src",
     "test": "echo \"No test specified\" && exit 0"
