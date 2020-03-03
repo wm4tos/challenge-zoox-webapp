@@ -9,6 +9,8 @@ const routes = [
       { path: 'cities/new', name: 'CreateCity', component: () => import('pages/Cities/Create') },
       { path: 'cities/:_id', name: 'EditCity', component: () => import('pages/Cities/Edit') },
       { path: 'states', name: 'StatesIndexPage', component: () => import('pages/States') },
+      { path: 'states/new', name: 'CreateState', component: () => import('pages/States/Create') },
+      { path: 'states/:_id', name: 'EditState', component: () => import('pages/States/Edit') },
     ],
   },
 ];
