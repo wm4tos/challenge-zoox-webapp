@@ -7,3 +7,7 @@ export function SAVE_USER(state, val) {
 export function SAVE_TOKEN(state, val) {
   Vue.set(state, 'token', val);
 }
+
+export function SAVE_LOGIN_HOUR(state, val) {
+  Vue.set(state, 'loginHour', val);
+}
