@@ -26,7 +26,7 @@ export default function (/* { ssrContext } */) {
     strict: process.env.DEV,
     plugins: [
       createPersistedState({
-        key: process.env.STATE_KEY,
+        key: process.env.STORE_KEY,
       }),
     ],
   });

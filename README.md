@@ -12,7 +12,7 @@ Para iniciar o projeto, eu recomendo que você siga as inscrições [deste repos
     ```
       API_URL=https://api.com
       PORT=8080
-      STATE_KEY=O8A6FGTCAsfcgaofGAv78ADFHYOVda*&FYH*o&G*&vadv*fayso&HAOE87vYA*&hfvo*afh
+      STORE_KEY=O8A6FGTCAsfcgaofGAv78ADFHYOVda*&FYH*o&G*&vadv*fayso&HAOE87vYA*&hfvo*afh
     ```
   - Rode o comando `npm install` ou `yarn`
   - Para rodar a versão de desenvolvimento, utilize `npm run start:dev` ou `yarn run start:dev`
