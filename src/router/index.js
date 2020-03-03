@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-
-import store from 'src/store';
+import moment from 'moment';
 
 import routes from './routes';
 
@@ -16,7 +15,7 @@ Vue.use(VueRouter);
  * with the Router instance.
  */
 
-export default function (/* { store, ssrContext } */) {
+export default function ({ store }) {
   const Router = new VueRouter({
     scrollBehavior: () => ({ x: 0, y: 0 }),
     routes,
@@ -29,7 +28,12 @@ export default function (/* { store, ssrContext } */) {
   });
 
   Router.beforeEach((to, from, next) => {
-    if (store().getters['user/isLogged'] || to.meta.dontNeedAuth) {
+    if (
+      (store.getters['user/isLogged']
+      && store.getters['user/getLoginHour']
+      && moment(store.getters['user/getLoginHour']).isSameOrAfter(moment().subtract({ hour: 1 })))
+      || to.meta.dontNeedAuth
+    ) {
       next();
     } else {
       next({ path: '' });
