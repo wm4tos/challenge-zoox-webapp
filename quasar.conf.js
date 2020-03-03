@@ -62,7 +62,7 @@ module.exports = function (ctx) {
 
     // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build
     build: {
-      vueRouterMode: 'history', // available values: 'hash', 'history'
+      vueRouterMode: process.env.NODE_ENV !== 'production' ? 'history' : 'hash', // available values: 'hash', 'history'
       env: Object.assign(envParsed, { PORT: Boolean(process.env.IS_DOCKER) ? 80 : envParsed.PORT  }),
 
       // showProgress: false,
