@@ -8,7 +8,7 @@
   "author": "Wesley Matos <wesley.matos@redfox.tech>",
   "private": true,
   "scripts": {
-    "start": "npx @quasar/cli serve -p 80 dist/spa",
+    "start": "npx @quasar/cli serve dist/spa",
     "build": "npx @quasar/cli build",
     "start:dev": "npx @quasar/cli dev",
     "lint": "eslint --ext .js,.vue src",
