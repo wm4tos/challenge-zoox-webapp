@@ -73,7 +73,4 @@ export default {
       this.showNotifyError(data.message);
     },
   },
-  mounted() {
-    this.$store.dispatch('user/LOGOUT');
-  },
 };

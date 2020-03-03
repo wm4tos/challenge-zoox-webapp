@@ -36,6 +36,7 @@ export default function ({ store }) {
     ) {
       next();
     } else {
+      store.dispatch('user/LOGOUT');
       next({ path: '' });
     }
   });
