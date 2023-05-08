@@ -23,8 +23,8 @@
     "vuex-persistedstate": "^2.7.1"
   },
   "devDependencies": {
-    "@quasar/app": "^1.0.0",
-    "@quasar/cli": "^1.0.5",
+    "@quasar/app": "^1.9.6",
+    "@quasar/cli": "^1.4.0",
     "babel-eslint": "^10.0.1",
     "directory-named-webpack-plugin": "^4.0.1",
     "dotenv": "^8.2.0",
